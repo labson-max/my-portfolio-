@@ -1,0 +1,166 @@
+my-portfolio)।<!DOCTYPE html>
+<html>
+<head>
+<title>Labson Poudel | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    text-align:center;
+}
+
+header{
+    padding:30px 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+section{
+    margin:20px;
+    padding:25px;
+    border-radius:15px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);
+    transition:0.4s;
+    animation: slideUp 1.5s ease;
+}
+
+section:hover{
+    transform: scale(1.03);
+}
+
+ul{
+    list-style:none;
+    margin-top:15px;
+}
+
+ul li{
+    padding:8px;
+    font-size:18px;
+}
+
+.game-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 25px;
+    background:#00c6ff;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.game-btn:hover{
+    background:#0072ff;
+    transform:scale(1.1);
+}
+
+.tag{
+    display:inline-block;
+    padding:6px 15px;
+    margin:5px;
+    background:#ff9800;
+    border-radius:20px;
+    font-size:14px;
+}
+
+footer{
+    margin:30px 0;
+    opacity:0.7;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes slideUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@media(max-width:600px){
+    section{
+        margin:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Labson Poudel</h1>
+<p>Modern Portfolio Website</p>
+<span class="tag">🎮 Game Developer</span>
+<span class="tag">💻 Python Learner</span>
+<span class="tag">🗳 Election Predictions</span>
+</header>
+
+<section>
+<h2>About Me</h2>
+<p style="margin-top:15px;">
+I was born on 15 September 2008 and my zodiac sign is Virgo. I am a calm, thoughtful, and focused person who believes more in actions than words. I may not talk much, but I think deeply and feel things strongly. I value loyalty, honesty, and peace in my life.
+I am practical by nature, disciplined, and good at concentrating on my goals. Sometimes I overthink, but that also makes me careful and responsible. I prefer a simple life with meaningful relationships rather than noise and drama. Green and earth tones suit me best and represent my balanced and grounded personality.
+In love and friendship, I am sincere and protective. I  do trust easily, but once I do, I stay loyal. I believe in steady growth, self-improvement, and becoming better every day—quietly and consistently..
+</p>
+</section>
+
+<section>
+<h2>🎮 Play My Game</h2>
+<a href="#" class="game-btn" onclick="startGame()">Start Game</a>
+<p id="gameResult" style="margin-top:15px;font-size:18px;"></p>
+</section>
+
+<section>
+<h2>🗳 Election Prediction</h2>
+<p style="margin-top:10px;">Enter the names of two candidates to predict the winner:</p>
+
+<input type="text" id="candidate1" placeholder="Candidate 1 Name">
+<input type="text" id="candidate2" placeholder="Candidate 2 Name">
+<a href="#" class="game-btn" onclick="predictElection()">Predict</a>
+
+<p id="predictionResult" style="margin-top:15px;font-size:18px;"></p>
+</section>
+
+<footer>
+© 2026 Labson Poudel | All Rights Reserved
+</footer>
+
+<script>
+function startGame(){
+    let number = Math.floor(Math.random()*5)+1;
+    let guess = prompt("Guess a number between 1 to 5:");
+
+    if(guess == number){
+        document.getElementById("gameResult").innerHTML = "🎉 Correct! You won!";
+    }else{
+        document.getElementById("gameResult").innerHTML = "❌ Wrong! Number was " + number;
+    }
+}
+
+function predictElection(){
+    let candidate1 = document.getElementById("candidate1").value;
+    let candidate2 = document.getElementById("candidate2").value;
+
+    if(candidate1 && candidate2){
+        let winner = Math.random() < 0.5 ? candidate1 : candidate2;
+        document.getElementById("predictionResult").innerHTML = "Prediction: " + winner + " will likely win!";
+    }else{
+        alert("Please enter both candidate names.");
+    }
+}
+</script>
+
+</body>
+</html>
